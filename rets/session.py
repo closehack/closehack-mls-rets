@@ -97,6 +97,8 @@ class Session(object):
             "Accept": "*/*",
         }
 
+        print("HEEEY")
+
         if self.version:
             self.client.headers["RETS-Version"] = "{0!s}".format(self.version)
 
