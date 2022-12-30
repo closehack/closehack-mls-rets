@@ -457,7 +457,7 @@ class Session(object):
             options["headers"]["RETS-UA-Authorization"] = "Digest {0!s}".format(
                 ua_digest
             )
-            print(f"closehack_rets -- 2 {options["headers"]["RETS-UA-Authorization"]}")
+            print(f"closehack_rets -- 2 {options['headers']['RETS-UA-Authorization']}")
         print("closehack_rets -- auth completed")
 
         if (
