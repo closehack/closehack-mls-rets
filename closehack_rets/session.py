@@ -453,9 +453,11 @@ class Session(object):
         print("closehack_rets -- running auth")
         if self.user_agent_password:
             ua_digest = self._user_agent_digest_hash()
+            print(f"closehack_rets -- 1 {ua_digest}")
             options["headers"]["RETS-UA-Authorization"] = "Digest {0!s}".format(
                 ua_digest
             )
+            print(f"closehack_rets -- 2 {options["headers"]["RETS-UA-Authorization"]}")
         print("closehack_rets -- auth completed")
 
         if (
