@@ -523,14 +523,19 @@ class Session(object):
         # digest = hashlib.md5(digest_str).hexdigest()
         # return digest
 
-        print("new version1")
+        session_id = self.session_id if self.session_id is not None else ""
+        version_number = self.version
+
+        print(f"user_agent: {self.user_agent}")
+        print(f"user_agent_password: {self.user_agent_password}")
+        print(f"session_id: {session_id}")
+        print(f"version_number: {version_number}")
+
 
         user_password = '%s:%s' % (self.user_agent, self.user_agent_password)
         a1 = hashlib.md5(user_password.encode()).hexdigest()
 
-        digest_values = '%s::%s:%s' % (a1, self.session_id if self.session_id is not None else "", self.version)
+        digest_values = '%s::%s:%s' % (a1, session_id, version_number)
         result = hashlib.md5(digest_values.encode()).hexdigest()
-
-        print("new version1")
 
         return result
