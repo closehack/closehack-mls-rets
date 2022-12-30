@@ -97,8 +97,6 @@ class Session(object):
             "Accept": "*/*",
         }
 
-        print("HEEEY")
-
         if self.version:
             self.client.headers["RETS-Version"] = "{0!s}".format(self.version)
 
@@ -148,6 +146,12 @@ class Session(object):
         Login to the RETS board and return an instance of Bulletin
         :return: Bulletin instance
         """
+
+        print("HEEEY")
+        logger.debug("HEEEY2")
+        logger.info("HEEEY3")
+        logger.error("HEEEY4")
+
         response = self._request("Login")
         parser = OneXLogin()
         parser.parse(response)
