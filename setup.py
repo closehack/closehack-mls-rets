@@ -15,7 +15,7 @@ with open(os.path.join(os.path.dirname(__file__), 'requirements.txt')) as f:
 with open(os.path.join(os.path.dirname(__file__), 'test_requirements.txt')) as f:
     test_required = f.read().splitlines()
 
-with open('rets/__init__.py', 'r') as fd:
+with open('closehack_rets/__init__.py', 'r') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
                         fd.read(), re.MULTILINE).group(1)
 
@@ -23,9 +23,9 @@ if not version:
     raise RuntimeError('Cannot find version information')
 
 setup(
-    name='rets',
+    name='closehack_rets',
     version=version,
-    packages=['rets'],
+    packages=['closehack_rets'],
     install_requires=required,
     tests_require=test_required,
     test_suite='nose.collector',
