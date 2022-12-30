@@ -147,11 +147,6 @@ class Session(object):
         :return: Bulletin instance
         """
 
-        print("HEEEY")
-        logger.debug("HEEEY2")
-        logger.info("HEEEY3")
-        logger.error("HEEEY4")
-
         response = self._request("Login")
         parser = OneXLogin()
         parser.parse(response)
@@ -455,11 +450,13 @@ class Session(object):
             )
             raise NotLoggedIn(msg)
 
+        print("closehack_rets -- running auth")
         if self.user_agent_password:
             ua_digest = self._user_agent_digest_hash()
             options["headers"]["RETS-UA-Authorization"] = "Digest {0!s}".format(
                 ua_digest
             )
+        print("closehack_rets -- auth completed")
 
         if (
             self.use_post_method and capability != "Action"
