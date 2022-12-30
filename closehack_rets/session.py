@@ -524,7 +524,7 @@ class Session(object):
         # return digest
 
         user_password = '%s:%s' % (self.user_agent, self.user_agent_password)
-        a1 = md5(user_password.encode()).hexdigest()
+        a1 = hashlib.md5(user_password.encode()).hexdigest()
 
         digest_values = '%s::%s:%s' % (a1, self.session_id if self.session_id is not None else "", self.version)
-        return md5(digest_values.encode()).hexdigest()
+        return hashlib.md5(digest_values.encode()).hexdigest()
