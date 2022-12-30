@@ -1,5 +1,6 @@
 import hashlib
 import logging
+import json
 
 import requests
 from requests.auth import HTTPBasicAuth, HTTPDigestAuth
@@ -179,6 +180,7 @@ class Session(object):
         :return: dict
         """
         result = self._make_metadata_request(meta_id=0, metadata_type="METADATA-SYSTEM")
+        print(json.dumps(result,indent=4,default=str))
         # Get dict out of list
         return result.pop()
 
