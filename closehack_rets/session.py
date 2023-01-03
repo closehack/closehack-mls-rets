@@ -260,8 +260,8 @@ class Session(object):
                 options={
                     "query": {
                         "Type": metadata_type,
-                        "ID": "*",
-                        #"ID": meta_id,
+                        #"ID": "*",
+                        "ID": meta_id,
                         "Format": self.metadata_format,
                     }
                 },
