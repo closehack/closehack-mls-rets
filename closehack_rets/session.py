@@ -272,6 +272,8 @@ class Session(object):
             #parser = CompactMetadata()
             print("___make_metadata_request begin - compact option specified")
             print(response)
+            print(response.data)
+            print(response.body)
             print("___make_metadata_request end")
         else:
             parser = StandardXMLMetadata()
