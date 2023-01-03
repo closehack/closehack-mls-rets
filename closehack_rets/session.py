@@ -461,20 +461,17 @@ class Session(object):
             )
             raise NotLoggedIn(msg)
 
-        print("closehack_rets -- running auth")
         if self.user_agent_password:
             ua_digest = self._user_agent_digest_hash()
-            print(f"closehack_rets -- 1 {ua_digest}")
             options["headers"]["RETS-UA-Authorization"] = "Digest {0!s}".format(
                 ua_digest
             )
-            print(f"closehack_rets -- 2 {options['headers']['RETS-UA-Authorization']}")
-        print("closehack_rets -- auth completed")
 
         if (
             self.use_post_method and capability != "Action"
         ):  # Action Requests should always be GET
             query = options.get("query")
+            print("_request - query",json.dumps(query,indent=4,default=str))
             response = self.client.post(
                 url, data=query, headers=options["headers"], stream=stream, timeout=self.timeout
             )
