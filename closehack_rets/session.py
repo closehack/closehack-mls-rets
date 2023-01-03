@@ -268,6 +268,11 @@ class Session(object):
 
         if self.metadata_format == "COMPACT-DECODED":
             parser = CompactMetadata()
+        else if self.metadata_format == "COMPACT":
+            #parser = CompactMetadata()
+            print("___make_metadata_request begin - compact option specified")
+            print(response)
+            print("___make_metadata_request end")
         else:
             parser = StandardXMLMetadata()
 
