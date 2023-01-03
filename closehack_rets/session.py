@@ -179,8 +179,8 @@ class Session(object):
         Get the top level metadata
         :return: dict
         """
-        #result = self._make_metadata_request(meta_id=0, metadata_type="METADATA-SYSTEM")
-        result = self._make_metadata_request(meta_id="*", metadata_type="METADATA-SYSTEM") # closehack change
+        result = self._make_metadata_request(meta_id=0, metadata_type="METADATA-SYSTEM")
+        #result = self._make_metadata_request(meta_id="*", metadata_type="METADATA-SYSTEM") # closehack change
         print(json.dumps(result,indent=4,default=str))
         # Get dict out of list
         return result.pop()
@@ -260,7 +260,8 @@ class Session(object):
                 options={
                     "query": {
                         "Type": metadata_type,
-                        "ID": meta_id,
+                        "ID": "*",
+                        #"ID": meta_id,
                         "Format": self.metadata_format,
                     }
                 },
