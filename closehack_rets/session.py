@@ -272,7 +272,7 @@ class Session(object):
             #parser = CompactMetadata()
             print("___make_metadata_request begin - compact option specified 2")
             print(response)
-            print(response.body)
+            print(json.dumps(response,indent=4,default=str))
             print("___make_metadata_request end")
         else:
             parser = StandardXMLMetadata()
