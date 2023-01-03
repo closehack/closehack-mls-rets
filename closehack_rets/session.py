@@ -270,7 +270,7 @@ class Session(object):
             parser = CompactMetadata()
         elif self.metadata_format == "COMPACT":
             #parser = CompactMetadata()
-            print("___make_metadata_request begin - compact option specified")
+            print("___make_metadata_request begin - compact option specified 2")
             print(response)
             print(response.data)
             print(response.body)
