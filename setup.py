@@ -24,7 +24,7 @@ if not version:
 
 setup(
     name='closehack_rets',
-    #version=version,
+    version=version,
     packages=['closehack_rets'],
     install_requires=required,
     tests_require=test_required,
