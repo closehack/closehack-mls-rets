@@ -510,19 +510,22 @@ class Session(object):
                 "automatically but it has not. Please instantiate the session with a version argument"
                 "to provide the version."
             )
+        
+        # v1 fn - original version from this file but removed rets strippage
         #version_number = self.version.strip("RETS/")
-        # version_number = self.version
-        # user_str = "{0!s}:{1!s}".format(
-        #     self.user_agent, self.user_agent_password
-        # ).encode("utf-8")
-        # a1 = hashlib.md5(user_str).hexdigest()
-        # session_id = self.session_id if self.session_id is not None else ""
-        # digest_str = "{0!s}::{1!s}:{2!s}".format(a1, session_id, version_number).encode(
-        #     "utf-8"
-        # )
-        # digest = hashlib.md5(digest_str).hexdigest()
-        # return digest
+        version_number = self.version
+        user_str = "{0!s}:{1!s}".format(
+            self.user_agent, self.user_agent_password
+        ).encode("utf-8")
+        a1 = hashlib.md5(user_str).hexdigest()
+        session_id = self.session_id if self.session_id is not None else ""
+        digest_str = "{0!s}::{1!s}:{2!s}".format(a1, session_id, version_number).encode(
+            "utf-8"
+        )
+        digest = hashlib.md5(digest_str).hexdigest()
+        return digest
 
+        # v2 fn - pulled from another library 
         session_id = self.session_id if self.session_id is not None else ""
         version_number = self.version
 
