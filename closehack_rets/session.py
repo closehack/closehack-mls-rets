@@ -272,7 +272,6 @@ class Session(object):
             #parser = CompactMetadata()
             print("___make_metadata_request begin - compact option specified 2")
             print(response)
-            print(response.data)
             print(response.body)
             print("___make_metadata_request end")
         else:
