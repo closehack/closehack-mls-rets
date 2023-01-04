@@ -180,7 +180,6 @@ class Session(object):
         :return: dict
         """
         result = self._make_metadata_request(meta_id=0, metadata_type="METADATA-SYSTEM")
-        #result = self._make_metadata_request(meta_id="*", metadata_type="METADATA-SYSTEM") # closehack change
         print(json.dumps(result,indent=4,default=str))
         # Get dict out of list
         return result.pop()
@@ -268,21 +267,8 @@ class Session(object):
             )
             self.metadata_responses[key] = response
 
-        print("___make_metadata_request begin - compact option specified 2")
-        print(response)
-        print(response.content)
-        print(json.dumps(response.content,indent=4,default=str))
-        print("___make_metadata_request end")
-
         if self.metadata_format == "COMPACT-DECODED":
             parser = CompactMetadata()
-        # elif self.metadata_format == "COMPACT": # closehack change
-        #     #parser = CompactMetadata()
-        #     print("___make_metadata_request begin - compact option specified 2")
-        #     print(response)
-        #     print(response.content)
-        #     print(json.dumps(response.content,indent=4,default=str))
-        #     print("___make_metadata_request end")
         else:
             parser = StandardXMLMetadata()
 
@@ -477,7 +463,7 @@ class Session(object):
             self.use_post_method and capability != "Action"
         ):  # Action Requests should always be GET
             query = options.get("query")
-            print("_request - query",json.dumps(query,indent=4,default=str))
+            #print("_request - query",json.dumps(query,indent=4,default=str))
             response = self.client.post(
                 url, data=query, headers=options["headers"], stream=stream, timeout=self.timeout
             )
@@ -538,21 +524,3 @@ class Session(object):
         )
         digest = hashlib.md5(digest_str).hexdigest()
         return digest
-
-        # v2 fn - pulled from another library 
-        session_id = self.session_id if self.session_id is not None else ""
-        version_number = self.version
-
-        print(f"user_agent: {self.user_agent}")
-        print(f"user_agent_password: {self.user_agent_password}")
-        print(f"session_id: {session_id}")
-        print(f"version_number: {version_number}")
-
-
-        user_password = '%s:%s' % (self.user_agent, self.user_agent_password)
-        a1 = hashlib.md5(user_password.encode()).hexdigest()
-
-        digest_values = '%s::%s:%s' % (a1, session_id, version_number)
-        result = hashlib.md5(digest_values.encode()).hexdigest()
-
-        return result
