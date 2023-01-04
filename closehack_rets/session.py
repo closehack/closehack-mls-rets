@@ -268,15 +268,21 @@ class Session(object):
             )
             self.metadata_responses[key] = response
 
+        print("___make_metadata_request begin - compact option specified 2")
+        print(response)
+        print(response.content)
+        print(json.dumps(response.content,indent=4,default=str))
+        print("___make_metadata_request end")
+
         if self.metadata_format == "COMPACT-DECODED":
             parser = CompactMetadata()
-        elif self.metadata_format == "COMPACT":
-            #parser = CompactMetadata()
-            print("___make_metadata_request begin - compact option specified 2")
-            print(response)
-            print(response.content)
-            print(json.dumps(response.content,indent=4,default=str))
-            print("___make_metadata_request end")
+        # elif self.metadata_format == "COMPACT": # closehack change
+        #     #parser = CompactMetadata()
+        #     print("___make_metadata_request begin - compact option specified 2")
+        #     print(response)
+        #     print(response.content)
+        #     print(json.dumps(response.content,indent=4,default=str))
+        #     print("___make_metadata_request end")
         else:
             parser = StandardXMLMetadata()
 
